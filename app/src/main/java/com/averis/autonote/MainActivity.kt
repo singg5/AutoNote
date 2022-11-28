@@ -39,8 +39,8 @@ class MainActivity : AppCompatActivity() {
         wynik = findViewById(R.id.wynik)
 
 
-        // przy kliknięciu oblicza paliwo, jednak gdy nie ma danych nic nadaje że jest błąd w
-        // konsoli
+        // przy kliknięciu oblicza paliwo, jednak gdy nie ma
+        // danych nic nadaje że jest błąd w konsoli
         oblicz.setOnClickListener {
             var lp = num1.text.toString()
             var ld = num2.text.toString()
