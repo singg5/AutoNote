@@ -17,8 +17,8 @@ jobs:
         with:
           java-version: 11
           distribution: 'temurin'
-          run: ./gradlew test --stacktrace
       - name: Unit tests
+        run: ./gradlew test --stacktrace
 
   build:
     name: Upload apk to App Tester
@@ -31,8 +31,8 @@ jobs:
       with:
         java-version: 11
         distribution: 'temurin'
-        run: ./gradlew assembleDebug
     - name: build release
+      run: ./gradlew assembleDebug
 
   apk:
     name: Generate APK
