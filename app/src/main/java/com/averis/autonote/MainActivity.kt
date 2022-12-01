@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
 //            }
             else {
                 var wynikpaliwa: Double = paliwo(ld.toDouble(), lp.toDouble())
-                wynik.setText("${roundToNum(wynikpaliwa)} l/100km")
+                wynik.text = "${roundToNum(wynikpaliwa)} l/100km"
             }
 
         }
