@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         oblicz.setOnClickListener {
             var lp = num1.text.toString()
             var ld = num2.text.toString()
-            var lt = num3.text.toString()
+//            var lt = num3.text.toString()
             if (lp.isEmpty()) {
                 println("error")
             } else if (ld.isEmpty()){
