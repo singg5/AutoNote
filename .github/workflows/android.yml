@@ -21,8 +21,10 @@ jobs:
           java-version: "11"
       - name: Set execution flag for gradlew
         run: chmod +x gradlew
-      - name: Build APK
-        run: bash ./gradlew assembleDebug --stacktrace
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v2
+      - name: Build SampleApplication
+        run: ./gradlew --no-daemon build
       - name: Upload APK
         uses: actions/upload-artifact@v1
         with:
