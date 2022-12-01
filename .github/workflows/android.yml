@@ -23,7 +23,7 @@ jobs:
         run: chmod +x gradlew
       - name: Setup Android SDK
         uses: android-actions/setup-android@v2
-      - name: Build SampleApplication
+      - name: Build AutoNote
         run: ./gradlew --no-daemon build
       - name: Upload APK
         uses: actions/upload-artifact@v1
