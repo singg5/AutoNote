@@ -34,6 +34,15 @@ jobs:
     needs: apk
     runs-on: ubuntu-latest
     steps:
+      - name: Generate App Version Name
+          run: echo "VERSION_NAME=$(git describe --tags | sed 's/\(.*\)-/\1./' | sed 's/\(.*\)-/\1+/')" >> $GITHUB_ENV
+
+      - name: Bump Version
+        uses: chkfung/android-version-actions@v1.1
+        with:
+          gradlePath: app/build.gradle.kts
+          versionCode: ${{ github.run_number }}
+          versionName: ${{ env.VERSION_NAME }}
       - name: Download APK from build
         uses: actions/download-artifact@v1
         with:
@@ -44,8 +53,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.run_number }}
-          release_name: ${{ github.event.repository.name }} v${{ github.run_number }}
+          tag_name: ${{ env.VERSION_NAME }}
+          release_name: ${{ github.event.repository.name }} v.${{ env.VERSION_NAME }}
       - name: Upload Release APK
         id: upload_release_asset
         uses: actions/upload-release-asset@v1.0.1
