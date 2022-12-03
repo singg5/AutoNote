@@ -18,15 +18,11 @@ class MainActivity : AppCompatActivity() {
     lateinit var wynik: TextView
     lateinit var oblicz: Button
 
-    fun roundToNum(numInDouble: Double): String {
+    private fun roundToNum(numInDouble: Double): String {
         return "%.2f".format(numInDouble)
     }
-
-    fun sum(a: Double, b: Double, c:Double): Double{
-        return a+b+c
-    }
-    fun paliwo(zp:Double, km:Double): Double {
-        return (zp/km)*100
+    fun fuel(fuelTanked:Double, kilometers:Double): Double {
+        return (fuelTanked/kilometers)*100
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,7 +50,7 @@ class MainActivity : AppCompatActivity() {
 //                println("error")
 //            }
             else {
-                var wynikpaliwa: Double = paliwo(ld.toDouble(), lp.toDouble())
+                var wynikpaliwa: Double = fuel(ld.toDouble(), lp.toDouble())
                 wynik.text = "${roundToNum(wynikpaliwa)} l/100km"
             }
 
