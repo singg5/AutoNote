@@ -5,7 +5,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-
+import androidx.core.view.isVisible
 
 
 class MainActivity : AppCompatActivity() {
@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
 
         num1 = findViewById(R.id.num1)
         num2 = findViewById(R.id.num2)
-        num3 = findViewById(R.id.num3)
+//        num3 = findViewById(R.id.num3)
         oblicz = findViewById(R.id.obliczButt)
         wynik = findViewById(R.id.wynik)
 
