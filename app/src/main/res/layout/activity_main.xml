@@ -27,11 +27,13 @@
         android:layout_width="wrap_content"
         android:layout_height="32dp"
         android:layout_marginStart="168dp"
+        android:layout_marginEnd="173dp"
         android:layout_marginBottom="20dp"
         android:gravity="center_horizontal"
         android:text="Wynik:"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/wynik"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <!--    <EditText-->
@@ -61,11 +63,11 @@
 
     <TextView
         android:id="@+id/wynik"
-        android:layout_width="100dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="207dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="150dp"
         android:layout_marginTop="21dp"
-        android:layout_marginEnd="204dp"
+        android:layout_marginEnd="150dp"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
