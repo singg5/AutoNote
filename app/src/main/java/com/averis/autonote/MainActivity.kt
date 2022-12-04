@@ -21,6 +21,9 @@ class MainActivity : AppCompatActivity() {
     private fun roundToNum(numInDouble: Double): String {
         return "%.2f".format(numInDouble)
     }
+    private fun roundTo(numInDouble: Double): String {
+        return "%.0f".format(numInDouble)
+    }
     fun fuel(fuelTanked:Double, kilometers:Double): Double {
         return (fuelTanked/kilometers)*100
     }
@@ -42,16 +45,21 @@ class MainActivity : AppCompatActivity() {
             var ld = num2.text.toString()
 //            var lt = num3.text.toString()
             if (lp.isEmpty()) {
-                println("error")
+                println("Nie ma liczby przejechanych kilometrów")
             } else if (ld.isEmpty()){
-                println("error")
+                println("Nie ma liczby zatankowane paliwa")
             }
 //            else if (lt.isEmpty()) {
 //                println("error")
 //            }
             else {
-                var wynikpaliwa: Double = fuel(ld.toDouble(), lp.toDouble())
-                wynik.text = "${roundToNum(wynikpaliwa)} l/100km"
+                if(lp.toDouble()%ld.toDouble() == 0.0) {
+                    var wynikpaliwa: Double = fuel(ld.toDouble(), lp.toDouble())
+                    wynik.text = "${roundTo(wynikpaliwa)} l/100km"
+                } else {
+                    var wynikpaliwa: Double = fuel(ld.toDouble(), lp.toDouble())
+                    wynik.text = "${roundToNum(wynikpaliwa)} l/100km"
+                }
             }
 
         }
