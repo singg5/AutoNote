@@ -1,14 +1,14 @@
 package com.averis.autonote
 
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
+import android.view.View
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
+    lateinit var spinner: Spinner
     lateinit var num1: EditText
     lateinit var num2: EditText
     lateinit var num3: EditText
@@ -31,12 +31,21 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        spinner = findViewById(R.id.spinner)
         num1 = findViewById(R.id.num1)
         num2 = findViewById(R.id.num2)
 //        num3 = findViewById(R.id.num3)
         oblicz = findViewById(R.id.obliczButt)
         wynik = findViewById(R.id.wynik)
 
+        var arrayAdapter = ArrayAdapter.createFromResource(
+            this,
+            R.array.picks,
+            android.R.layout.simple_spinner_item
+        )
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+        spinner.adapter = arrayAdapter
 
         // przy kliknięciu oblicza paliwo, jednak gdy nie ma
         // danych nic nadaje że jest błąd w konsoli
@@ -63,6 +72,14 @@ class MainActivity : AppCompatActivity() {
             }
 
         }
+    }
+
+    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onNothingSelected(parent: AdapterView<*>?) {
+        TODO("Not yet implemented")
     }
 }
 

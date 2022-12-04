@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">AutoNote</string>
+    <string-array name="picks">
+        <item>Średnia spalania</item>
+        <item>ph</item>
+        <item>ph</item>
+        <item>ph</item>
+    </string-array>
 </resources>
