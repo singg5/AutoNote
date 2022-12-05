@@ -49,7 +49,6 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         spinner = findViewById(R.id.spinner)
         num1 = findViewById(R.id.num1)
         num2 = findViewById(R.id.num2)
-//        num3 = findViewById(R.id.num3)
         oblicz = findViewById(R.id.obliczButt)
         wynik = findViewById(R.id.wynik)
 
@@ -61,30 +60,20 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
         spinner.adapter = arrayAdapter
-
+        // TODO: Dokumentacja
         // przy kliknięciu oblicza paliwo, jednak gdy nie ma
         // danych nic nadaje że jest błąd w konsoli
         oblicz.setOnClickListener {
             var lp = num1.text.toString()
             var ld = num2.text.toString()
-//            var lt = num3.text.toString()
             if (lp.isEmpty()) {
                 println("Nie ma liczby przejechanych kilometrów")
             } else if (ld.isEmpty()){
                 println("Nie ma liczby zatankowane paliwa")
             }
-//            else if (lt.isEmpty()) {
-//                println("error")
-//            }
             else {
                 val wynikPaliwa: Double = fuel(ld.toDouble(), lp.toDouble())
                 wynik.text = "${removeTrailingZeros(roundToOne(wynikPaliwa))} l/100km"
-
-                /*
-                600 i 29.98 = 4.99666666667
-                35 i 35 = 100
-                35.98 i 35.65 = 99.082823791
-                 */
             }
 
         }
