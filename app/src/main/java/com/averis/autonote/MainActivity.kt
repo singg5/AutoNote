@@ -5,27 +5,42 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import java.math.RoundingMode
+import kotlin.math.round
+import kotlin.math.roundToInt
 
 
 class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     lateinit var spinner: Spinner
     lateinit var num1: EditText
     lateinit var num2: EditText
-    lateinit var num3: EditText
+//    lateinit var num3: EditText
 //    lateinit var num1Str: String
 //    lateinit var num2Str: String
 //    lateinit var num3Str: String
     lateinit var wynik: TextView
     lateinit var oblicz: Button
 
-    private fun roundToNum(numInDouble: Double): String {
-        return "%.2f".format(numInDouble)
+    fun Double.round(decimals: Int): Double {
+        var multiplier = 1.0
+        repeat(decimals) { multiplier *= 10 }
+        return round(this * multiplier) / multiplier
     }
-    private fun roundTo(numInDouble: Double): String {
+    private fun roundToOne(numInDouble: Double): String {
+        return "%.1f".format(numInDouble)
+    }
+    private fun roundToZero(numInDouble: Double): String {
         return "%.0f".format(numInDouble)
     }
     fun fuel(fuelTanked:Double, kilometers:Double): Double {
         return (fuelTanked/kilometers)*100
+    }
+    fun removeTrailingZeros(num: String): String{
+        if(!num.contains('.'))
+            return num
+        return num
+            .dropLastWhile { it == '0' }
+            .dropLastWhile { it == '.' }
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,13 +77,14 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 //                println("error")
 //            }
             else {
-                if(lp.toDouble()%ld.toDouble() == 0.0) {
-                    var wynikpaliwa: Double = fuel(ld.toDouble(), lp.toDouble())
-                    wynik.text = "${roundTo(wynikpaliwa)} l/100km"
-                } else {
-                    var wynikpaliwa: Double = fuel(ld.toDouble(), lp.toDouble())
-                    wynik.text = "${roundToNum(wynikpaliwa)} l/100km"
-                }
+                val wynikPaliwa: Double = fuel(ld.toDouble(), lp.toDouble())
+                wynik.text = "${removeTrailingZeros(roundToOne(wynikPaliwa))} l/100km"
+
+                /*
+                600 i 29.98 = 4.99666666667
+                35 i 35 = 100
+                35.98 i 35.65 = 99.082823791
+                 */
             }
 
         }
