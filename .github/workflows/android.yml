@@ -6,7 +6,7 @@ on:
       - main
     tags:
       - "v*"
-version: "0.0.7"
+define: &version '0.0.7'
 jobs:
   apk:
     name: Generate APK
@@ -46,8 +46,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: {{version}}
-          release_name: ${{ github.event.repository.name }} v{{version}}
+          tag_name: ${{ version }}
+          release_name: ${{ github.event.repository.name }} v${{ version }}
           prerelease: true
       - name: Upload Release APK
         id: upload_release_asset
