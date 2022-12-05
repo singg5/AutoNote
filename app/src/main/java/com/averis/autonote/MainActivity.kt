@@ -14,10 +14,6 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     lateinit var spinner: Spinner
     lateinit var num1: EditText
     lateinit var num2: EditText
-//    lateinit var num3: EditText
-//    lateinit var num1Str: String
-//    lateinit var num2Str: String
-//    lateinit var num3Str: String
     lateinit var wynik: TextView
     lateinit var oblicz: Button
 
