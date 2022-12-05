@@ -46,8 +46,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VERSION: '0.0.7'
         with:
-          tag_name: ${{ steps.create_release.env.version }}
-          release_name: ${{ github.event.repository.name }} v${{ steps.create_release.env.version }}
+          tag_name: ${{ steps.create_release.env.VERSION }}
+          release_name: ${{ github.event.repository.name }} v${{ steps.create_release.env.VERSION }}
           prerelease: true
       - name: Upload Release APK
         id: upload_release_asset
