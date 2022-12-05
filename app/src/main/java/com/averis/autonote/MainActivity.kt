@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             .dropLastWhile { it == '0' }
             .dropLastWhile { it == '.' }
     }
+    // TODO: Opisać funkcje
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
