@@ -6,6 +6,7 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import java.math.RoundingMode
+import java.text.DecimalFormat
 import kotlin.math.round
 import kotlin.math.roundToInt
 
@@ -24,6 +25,9 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     }
     private fun roundToOne(numInDouble: Double): String {
         return "%.1f".format(numInDouble)
+    }
+    private fun roundToTwo(numInDouble: Double): String {
+        return "%.2f".format(numInDouble)
     }
     private fun roundToZero(numInDouble: Double): String {
         return "%.0f".format(numInDouble)
@@ -49,6 +53,8 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         oblicz = findViewById(R.id.obliczButt)
         wynik = findViewById(R.id.wynik)
 
+        val df = DecimalFormat("#.###")
+
         var arrayAdapter = ArrayAdapter.createFromResource(
             this,
             R.array.picks,
@@ -69,8 +75,16 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 println("Nie ma liczby zatankowane paliwa")
             }
             else {
-                val wynikPaliwa: Double = fuel(ld.toDouble(), lp.toDouble())
-                wynik.text = "${removeTrailingZeros(roundToOne(wynikPaliwa))} l/100km"
+                val wynikPaliwa: Double = fuel(ld.toDouble(), lp.toDouble()) // 4.99
+                val wynikPaliwaStr: String = df.format(wynikPaliwa)
+                val wynikPaliwaStrTwo: String = roundToTwo(wynikPaliwa)
+                val wynikPaliwaStrRound: String = (round(wynikPaliwa * 100) / 100).toString()
+                println(wynikPaliwaStrRound)
+                if(wynikPaliwaStr.contains(".0")) {
+                    wynik.text = "${removeTrailingZeros(wynikPaliwaStr)} l/100km"
+                } else {
+                    wynik.text = "${wynikPaliwaStr} l/100km"
+                }
             }
 
         }
