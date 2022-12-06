@@ -3,7 +3,7 @@ package com.averis.autonote
 import java.text.DecimalFormat
 
 class Vehicle(var name: String, fuelcap: Int) {
-    var lkm: Double? = null
+    var lkm: String? = null
 
     fun fuel(fuelTanked:Double, kilometers:Double): Double {
         return (fuelTanked/kilometers)*100

@@ -4,14 +4,14 @@ import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
 import java.math.RoundingMode
 import java.text.DecimalFormat
+import java.util.*
 import kotlin.math.round
-import kotlin.math.roundToInt
 
 
 class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
+
     lateinit var spinner: Spinner
     lateinit var num1: EditText
     lateinit var num2: EditText
@@ -78,8 +78,9 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 //                } else {
 //                    wynik.text = "${wynikPaliwaStr} l/100km"
 //                }
-                vehicle.lkm = vehicle.removeTrailingZeros(wynikPaliwaStr).toDouble()
-                wynik.text = "${vehicle.removeTrailingZeros(wynikPaliwaStr)} l/100km"
+                vehicle.lkm = vehicle.removeTrailingZeros(wynikPaliwaStr)
+                wynik.text = "${vehicle.lkm} l/100km"
+
             }
         }
     }
