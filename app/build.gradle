@@ -9,10 +9,10 @@ android {
 
     defaultConfig {
         applicationId "com.averis.autonote"
-        minSdk 28
+        minSdk 27
         targetSdk 33
         versionCode 1
-        versionName "0.0.8"
+        versionName "0.0.9"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
