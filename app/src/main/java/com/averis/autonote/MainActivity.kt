@@ -18,6 +18,8 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     lateinit var wynik: TextView
     lateinit var oblicz: Button
 
+    var vehicle = Vehicle("Test", 66)
+
     fun Double.round(decimals: Int): Double {
         var multiplier = 1.0
         repeat(decimals) { multiplier *= 10 }
@@ -32,16 +34,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     private fun roundToZero(numInDouble: Double): String {
         return "%.0f".format(numInDouble)
     }
-    fun fuel(fuelTanked:Double, kilometers:Double): Double {
-        return (fuelTanked/kilometers)*100
-    }
-    fun removeTrailingZeros(num: String): String{
-        if(!num.contains('.'))
-            return num
-        return num
-            .dropLastWhile { it == '0' }
-            .dropLastWhile { it == '.' }
-    }
+
     // TODO: Opisać funkcje
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,18 +69,19 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 println("Nie ma liczby zatankowane paliwa")
             }
             else {
-                val wynikPaliwa: Double = fuel(ld.toDouble(), lp.toDouble()) // 4.99
+                val wynikPaliwa = vehicle.fuel(ld.toDouble(), lp.toDouble())
+//                val wynikPaliwa: Double = fuel(ld.toDouble(), lp.toDouble()) // 4.99
                 val wynikPaliwaStr: String = df.format(wynikPaliwa)
                 val wynikPaliwaStrTwo: String = roundToTwo(wynikPaliwa)
-                val wynikPaliwaStrRound: String = (round(wynikPaliwa * 100) / 100).toString()
-                println(wynikPaliwaStrRound)
-                if(wynikPaliwaStr.contains(".0")) {
-                    wynik.text = "${removeTrailingZeros(wynikPaliwaStr)} l/100km"
-                } else {
-                    wynik.text = "${wynikPaliwaStr} l/100km"
-                }
+//                if(wynikPaliwaStr.contains(".0")) {
+//                    wynik.text = "${removeTrailingZeros(wynikPaliwaStr)} l/100km"
+//                } else {
+//                    wynik.text = "${wynikPaliwaStr} l/100km"
+//                }
+                vehicle.lkm = vehicle.removeTrailingZeros(wynikPaliwaStr).toDouble()
+                wynik.text = "${vehicle.removeTrailingZeros(wynikPaliwaStr)} l/100km"
             }
-
+            println(vehicle.lkm)
         }
     }
 
