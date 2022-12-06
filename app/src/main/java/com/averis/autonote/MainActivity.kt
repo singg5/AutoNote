@@ -53,7 +53,8 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         oblicz = findViewById(R.id.obliczButt)
         wynik = findViewById(R.id.wynik)
 
-        val df = DecimalFormat("#.###")
+        val df = DecimalFormat("#.##")
+        df.roundingMode = RoundingMode.DOWN
 
         var arrayAdapter = ArrayAdapter.createFromResource(
             this,
