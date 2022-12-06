@@ -1,6 +1,6 @@
 name: CI/CD Android App
 env:
-  VERSION: '0.0.11'
+  VERSION: '0.0.12'
 on:
   push:
     branches:
@@ -24,7 +24,7 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v2
       - name: Build AutoNote
-        run: ./gradlew --no-daemon build
+        run: ./gradlew assembleDebug
       - name: Upload APK
         uses: actions/upload-artifact@v1
         with:

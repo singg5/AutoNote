@@ -81,7 +81,6 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 vehicle.lkm = vehicle.removeTrailingZeros(wynikPaliwaStr).toDouble()
                 wynik.text = "${vehicle.removeTrailingZeros(wynikPaliwaStr)} l/100km"
             }
-            println(vehicle.lkm)
         }
     }
 
