@@ -13,10 +13,10 @@ import kotlin.math.round
 class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
     lateinit var spinner: Spinner
-    lateinit var num1: EditText
-    lateinit var num2: EditText
-    lateinit var wynik: TextView
+    lateinit var number1: EditText
+    lateinit var number2: EditText
     lateinit var oblicz: Button
+    lateinit var result: TextView
 
     var vehicle = Vehicle("Test", 66)
 
@@ -41,10 +41,10 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         setContentView(R.layout.activity_main)
 
         spinner = findViewById(R.id.spinner)
-        num1 = findViewById(R.id.num1)
-        num2 = findViewById(R.id.num2)
+        number1 = findViewById(R.id.num1)
+        number2 = findViewById(R.id.num2)
         oblicz = findViewById(R.id.obliczButt)
-        wynik = findViewById(R.id.wynik)
+        result = findViewById(R.id.wynik)
 
         val df = DecimalFormat("#.##")
         df.roundingMode = RoundingMode.DOWN
@@ -61,15 +61,15 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         // przy kliknięciu oblicza paliwo, jednak gdy nie ma
         // danych nic nadaje że jest błąd w konsoli
         oblicz.setOnClickListener {
-            var lp = num1.text.toString()
-            var ld = num2.text.toString()
-            if (lp.isEmpty()) {
+            var numberOne = number1.text.toString()
+            var numberTwo = number2.text.toString()
+            if (numberOne.isEmpty()) {
                 println("Nie ma liczby przejechanych kilometrów")
-            } else if (ld.isEmpty()){
+            } else if (numberTwo.isEmpty()){
                 println("Nie ma liczby zatankowane paliwa")
             }
             else {
-                val wynikPaliwa = vehicle.fuel(ld.toDouble(), lp.toDouble())
+                val wynikPaliwa = vehicle.fuel(numberTwo.toDouble(), numberOne.toDouble())
 //                val wynikPaliwa: Double = fuel(ld.toDouble(), lp.toDouble()) // 4.99
                 val wynikPaliwaStr: String = df.format(wynikPaliwa)
                 val wynikPaliwaStrTwo: String = roundToTwo(wynikPaliwa)
@@ -79,7 +79,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 //                    wynik.text = "${wynikPaliwaStr} l/100km"
 //                }
                 vehicle.lkm = vehicle.removeTrailingZeros(wynikPaliwaStr)
-                wynik.text = "${vehicle.lkm} l/100km"
+                result.text = "${vehicle.lkm} l/100km"
 
             }
         }
