@@ -1,6 +1,6 @@
 name: CI/CD Android App
 env:
-  VERSION: '0.0.14'
+  VERSION: '0.0.15'
 on:
   push:
     branches:
