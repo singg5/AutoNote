@@ -46,7 +46,7 @@ class Calculator : Fragment(R.layout.fragment_calculator) {
         df.roundingMode = RoundingMode.DOWN
         val view = inflater.inflate(R.layout.fragment_calculator, container, false)
         val calculate: Button = view.findViewById(R.id.calculate)
-//        val spinner = findViewById(R.id.spinner)
+//        val spinner = findViewById(R.id.spinner) // for feature use
         val distance = view.findViewById<EditText>(R.id.distance)
         val fuelTanked = view.findViewById<EditText>(R.id.fuelTanked)
         val result = view.findViewById<TextView>(R.id.result)
@@ -67,11 +67,6 @@ class Calculator : Fragment(R.layout.fragment_calculator) {
 //                val wynikPaliwa: Double = fuel(ld.toDouble(), lp.toDouble()) // 4.99
                 val wynikPaliwaStr: String = df.format(wynikPaliwa)
                 val wynikPaliwaStrTwo: String = roundToTwo(wynikPaliwa)
-//                if(wynikPaliwaStr.contains(".0")) {
-//                    wynik.text = "${removeTrailingZeros(wynikPaliwaStr)} l/100km"
-//                } else {
-//                    wynik.text = "${wynikPaliwaStr} l/100km"
-//                }
                 vehicle.lkm = vehicle.removeTrailingZeros(wynikPaliwaStr)
                 result.text = "${vehicle.lkm} l/100km"
 
