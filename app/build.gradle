@@ -14,8 +14,11 @@ android {
         targetSdk 33
         versionCode 5
         versionName "0.0.19"
+        ext{
+            version_name = versionName
+        }
         task printVersionName {
-            println project.android.defaultConfig.versionName
+            println project.android.defaultConfig.ext.version_name
         }
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
