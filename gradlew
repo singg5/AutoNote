@@ -191,7 +191,7 @@ export VERSION_TMP=$(grep $GRADLE_FIELD $GRADLE_PATH | awk '{print $2}')    # ge
 export VERSION=$(echo $VERSION_TMP | sed -e 's/^"//'  -e 's/"$//')  # remove quotes 0.1.0
 
 task printVersionName {
-    println project.ext.version_name
+    println VERSION
 }
 echo gradle version: $VERSION
 echo release tag: $GIT_TAG
