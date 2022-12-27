@@ -19,7 +19,7 @@ jobs:
         run: chmod +x gradlew
       - name : Retrieve Version
         run: |
-          echo "version_name=$(${{github.workspace}}/gradlew -q printVersionInformation)" >> $GITHUB_ENV
+          echo "version_name=$(gradlew -q printVersionInformation)" >> $GITHUB_ENV
       - name: Setup Android SDK
         uses: android-actions/setup-android@v2
       - name: Build AutoNote
