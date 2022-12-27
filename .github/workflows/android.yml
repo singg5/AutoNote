@@ -1,6 +1,6 @@
 name: CI/CD Android App
 env:
-  VERSION: '0.0.18'
+  VERSION: '0.0.19'
 on:
   push:
     branches:
@@ -44,8 +44,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ env.VERSION }}
-          release_name: ${{ github.event.repository.name }} v${{ env.VERSION }}
+          tag_name: ${{ github.ref }}
+          release_name: ${{ github.event.repository.name }} v${{ github.ref }}
           prerelease: true
       - name: Upload Release APK
         id: upload_release_asset
