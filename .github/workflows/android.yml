@@ -1,6 +1,4 @@
 name: CI/CD Android App
-env:
-  VERSION: '0.0.19'
 on:
   push:
     branches:
@@ -28,6 +26,7 @@ jobs:
         with:
           name: apk
           path: app/build/outputs/apk/debug/app-debug.apk
+      - run: echo "VERSION_INFORMATION=$(${{github.workspace}}/gradlew -q printVersionInformation)" >> $GITHUB_ENV
 
   release:
     name: Release APK
@@ -44,8 +43,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref }}
-          release_name: ${{ github.event.repository.name }} v${{ github.ref }}
+          tag_name: ${{ env.VERSION_INFORMATION }}
+          release_name: ${{ github.event.repository.name }} v${{ env.VERSION_INFORMATION }}
           prerelease: true
       - name: Upload Release APK
         id: upload_release_asset
