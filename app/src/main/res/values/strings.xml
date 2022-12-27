@@ -1,14 +1,23 @@
 <resources>
     <string name="app_name">AutoNote</string>
-    <string name="home">Główna</string>
-    <string name="note">Notatnik</string>
-    <string name="calculator">Kalkulator</string>
+
+    <string name="home">Home</string>
+    <string name="note">Note</string>
+    <string name="calculator">Calculator</string>
+
+    <string name="calculate">Calculate</string>
+    <string name="result">Result:</string>
+    <string name="fuel">Fuel</string>
+    <string name="distance">Distance</string>
+    <string name="kilometers_traveled">Kilometers traveled</string>
+    <string name="fuel_tanked">Fuel tanked</string>
+    <string name="error_field_empty">The field cannot be empty</string>
+    <string name="text_for_average_fuel">I will calculate for you the average fuel per 100 kilometers</string>
+
     <string-array name="picks">
-        <item>Średnia spalania</item>
-        <item>Koszty podróży</item>
-        <item>ph</item>
-        <item>ph</item>
+        <item>Average fuel burn</item>
+        <item>Travel costs</item>
+        <item>placeholder</item>
+        <item>placeholder</item>
     </string-array>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
