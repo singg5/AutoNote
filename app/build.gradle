@@ -18,7 +18,7 @@ android {
             version_name = versionName
         }
         task printVersionName {
-            println project.android.defaultConfig.ext.version_name
+            println project.android.defaultConfig.versionName
         }
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

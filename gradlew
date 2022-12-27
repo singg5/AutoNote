@@ -189,3 +189,9 @@ export GRADLE_FIELD="versionName"   # field name
 # logic
 export VERSION_TMP=$(grep $GRADLE_FIELD $GRADLE_PATH | awk '{print $2}')    # get value versionName"0.1.0"
 export VERSION=$(echo $VERSION_TMP | sed -e 's/^"//'  -e 's/"$//')  # remove quotes 0.1.0
+
+task printVersionName {
+    println project.android.defaultConfig.versionName
+}
+echo gradle version: $VERSION
+echo release tag: $GIT_TAG
