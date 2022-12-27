@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import java.math.RoundingMode
 import java.text.DecimalFormat
 
@@ -55,12 +56,13 @@ class Calculator : Fragment(R.layout.fragment_calculator) {
 
 
         calculate.setOnClickListener {
-            var numberOne = distance.text.toString()
-            var numberTwo = fuelTanked.text.toString()
+            val numberOne = distance.text.toString()
+            val numberTwo = fuelTanked.text.toString()
+            val error = R.string.error_field_empty
             if (numberOne.isEmpty()) {
-                println("Nie ma liczby przejechanych kilometrów")
+                Toast.makeText(activity,error, Toast.LENGTH_SHORT).show()
             } else if (numberTwo.isEmpty()){
-                println("Nie ma liczby zatankowane paliwa")
+                Toast.makeText(activity,error, Toast.LENGTH_SHORT).show()
             }
             else {
                 val wynikPaliwa = vehicle.fuel(numberTwo.toDouble(), numberOne.toDouble())

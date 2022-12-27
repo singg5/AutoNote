@@ -11,6 +11,7 @@
     <string name="distance">Distance</string>
     <string name="kilometers_traveled">Kilometers traveled</string>
     <string name="fuel_tanked">Fuel tanked</string>
+    <string name="error_field_empty">The field cannot be empty</string>
     <string name="text_for_average_fuel">I will calculate for you the average fuel per 100 kilometers</string>
 
     <string-array name="picks">
