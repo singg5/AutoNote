@@ -32,7 +32,7 @@ jobs:
     needs: apk
     runs-on: ubuntu-latest
     steps:
-      # - run: echo "VERSION_INFORMATION=$(${{github.workspace}}/gradlew -q printVersionInformation)" >> $GITHUB_ENV
+      - run: echo "VERSION_INFORMATION=$(${{github.workspace}}/gradlew -q printVersionInformation)" >> $GITHUB_ENV
       - name: Download APK from build
         uses: actions/download-artifact@v1
         with:
@@ -41,7 +41,7 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         env:
-          VERSION_INFORMATION: $(${{github.workspace}}/gradlew -q printVersionInformation)
+          # VERSION_INFORMATION: $(${{github.workspace}}/gradlew -q printVersionInformation)
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ env.VERSION_INFORMATION }}
