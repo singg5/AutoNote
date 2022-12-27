@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AutoNote</string>
+    <string name="home">Główna</string>
+    <string name="note">Notatnik</string>
+    <string name="calculator">Kalkulator</string>
+    <string name="calculate">Oblicz</string>
+    <string name="result">Wynik</string>
+    <string name="fuel">Paliwo</string>
+    <string name="distance">Odległość</string>
+    <string name="kilometers_traveled">Przejechane kilometry</string>
+    <string name="kilometers_traveled">P</string>
+    <string name="fuel_tanked">Zatankowane paliwo</string>
+    <string name="error_field_empty">Pole nie może być puste</string>
+    <string name="text_for_average_fuel">Obliczę dla Ciebie średnie zużycie paliwa na 100 kilometrów</string>
+</resources>
