@@ -5,7 +5,7 @@ plugins {
 
 android {
     task printVersionInformation {
-        println "v" + defaultConfig.versionName
+        println "v" + defaultConfig.versionName + " (" + defaultConfig.versionCode + ")"
     }
     namespace 'com.averis.autonote'
     compileSdk 33
