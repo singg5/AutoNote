@@ -4,9 +4,7 @@ plugins {
 }
 
 android {
-    task printVersionInformation {
-        println "v" + defaultConfig.versionName + " (" + defaultConfig.versionCode + ")"
-    }
+
     namespace 'com.averis.autonote'
     compileSdk 33
 
@@ -16,7 +14,9 @@ android {
         targetSdk 33
         versionCode 5
         versionName "0.0.19"
-
+        task printVersionInformation {
+            println "v" + defaultConfig.versionName + " (" + defaultConfig.versionCode + ")"
+        }
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
