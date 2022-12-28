@@ -183,3 +183,15 @@ APP_ARGS=`save "$@"`
 eval set -- $DEFAULT_JVM_OPTS $JAVA_OPTS $GRADLE_OPTS "\"-Dorg.gradle.appname=$APP_BASE_NAME\"" -classpath "\"$CLASSPATH\"" org.gradle.wrapper.GradleWrapperMain "$APP_ARGS"
 
 exec "$JAVACMD" "$@"
+# variables
+export GRADLE_PATH=./app/build.gradle   # path to the gradle file
+export GRADLE_FIELD="versionName"   # field name
+# logic
+export VERSION_TMP=$(grep $GRADLE_FIELD $GRADLE_PATH | awk '{print $2}')    # get value versionName"0.1.0"
+export VERSION=$(echo $VERSION_TMP | sed -e 's/^"//'  -e 's/"$//')  # remove quotes 0.1.0
+
+task printVersionName {
+    println VERSION
+}
+echo gradle version: $VERSION
+echo release tag: $GIT_TAG
