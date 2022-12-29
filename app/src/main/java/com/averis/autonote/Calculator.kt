@@ -60,12 +60,12 @@ class Calculator : Fragment(R.layout.fragment_calculator), AdapterView.OnItemSel
                         editorOne.hint = getString(R.string.distance)
                         numberOneString.text = kilometersTraveled
                         calculate.setOnClickListener {
-                            val numberOne = editorOne.text.toString()
-                            val numberTwo = editorTwo.text.toString()
-                            when (numberOne.isNotEmpty() || numberTwo.isNotEmpty()) {
+                            val fuelTanked = editorOne.text.toString()
+                            val distance = editorTwo.text.toString()
+                            when (fuelTanked.isNotEmpty() || distance.isNotEmpty()) {
                                 true -> {
                                     val wynikPaliwa =
-                                        vehicle.averageFuelBurn(numberTwo.toDouble(), numberOne.toDouble())
+                                        vehicle.averageFuelBurn(distance.toDouble(), fuelTanked.toDouble())
                                     val wynikPaliwaStr: String = df.format(wynikPaliwa)
                                     vehicle.lkm = vehicle.removeTrailingZeros(wynikPaliwaStr)
                                     result.text = "${vehicle.lkm} l/100km"
