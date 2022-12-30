@@ -85,7 +85,7 @@ jobs:
           asset_name: ${{ github.event.repository.name }}.apk
           asset_content_type: application/apk
   deploy-firebase:
-    name: Release APK
+    name: Release APK to Firebase testers
     needs: release
     runs-on: ubuntu-latest
     steps:
