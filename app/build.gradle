@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -12,8 +13,8 @@ android {
         applicationId "com.averis.autonote"
         minSdk 27
         targetSdk 33
-        versionCode 6
-        versionName "0.0.20"
+        versionCode 7
+        versionName "0.0.21"
         ext{
             version_name = versionName
         }
@@ -46,7 +47,11 @@ android {
 
 dependencies {
     def nav_version = "2.5.3"
-    def appCenterSdkVersion = '4.4.5'
+    def appCenterSdkVersion = '5.0.0'
+
+    //firebase
+    implementation platform('com.google.firebase:firebase-bom:31.1.1')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
 
     // appcenter
     implementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}"
