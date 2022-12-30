@@ -11,7 +11,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
+        <Button
+            android:id="@+id/adviceButton"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="153dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="164dp"
+            android:text="@string/advices_for_driver"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

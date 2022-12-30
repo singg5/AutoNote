@@ -13,11 +13,30 @@
     <string name="fuel_tanked">Fuel tanked</string>
     <string name="error_field_empty">The field cannot be empty</string>
     <string name="text_for_average_fuel">I will calculate for you the average fuel per 100 kilometers</string>
+    <string name="advices_for_driver">Advices for driver</string>
+    <string name="average_fuel_burn">Average fuel burn</string>
+    <string name="travel_costs">Travel costs</string>
+    <string name="fuel_price_liters">Fuel price per liter</string>
+    <string name="fuel_price_gallons">Fuel price per gallon</string>
+    <string name="currency_hint">USD</string>
+    <string name="PH">placeholder</string>
+    <string name="PH_TWO">placeholder2</string>
+
+
 
     <string-array name="picks">
-        <item>Average fuel burn</item>
-        <item>Travel costs</item>
+        <item>@string/average_fuel_burn</item>
+        <item>@string/travel_costs</item>
         <item>placeholder</item>
         <item>placeholder</item>
     </string-array>
+    <string name="title_activity_advices">AdvicesActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 </resources>

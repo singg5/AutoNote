@@ -12,4 +12,10 @@
     <string name="fuel_tanked">Zatankowane paliwo</string>
     <string name="error_field_empty">Pole nie może być puste</string>
     <string name="text_for_average_fuel">Obliczę dla Ciebie średnie zużycie paliwa na 100 kilometrów</string>
+    <string name="advices_for_driver">Porady dla kierowcy</string>
+    <string name="average_fuel_burn">Średnia spalania paliwa</string>
+    <string name="travel_costs">Koszty podróży</string>
+    <string name="currency_hint">PLN</string>
+    <string name="fuel_price_liters">Cena paliwa za litr</string>
+    <string name="fuel_price_gallons">Cena paliwa za galon</string>
 </resources>
