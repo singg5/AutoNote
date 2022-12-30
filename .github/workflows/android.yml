@@ -1,6 +1,6 @@
 name: CI/CD Android App
 env:
-  VERSION: '0.0.20'
+  VERSION: '0.0.21'
 on:
   push:
     branches:
@@ -13,11 +13,11 @@ jobs:
       runs-on: ubuntu-latest
       steps:
         - name: Create file
-          run: touch ./app/google-services.json && echo $GOOGLE_SERVICES_JSON | base64 -d > ./app/google-services.json
-        # - name: Putting data
-        #   env:
-        #     DATA: ${{ secrets.GOOGLE_SERVICES_JSON }}
-        #   run: echo $DATA > /home/runner/work/AutoNote/AutoNote/app/google-services.json
+          run: touch /home/runner/work/AutoNote/AutoNote/app/google-services.json | base64
+        - name: Putting data
+          env:
+            DATA: ${{ secrets.GOOGLE_SERVICES_JSON }}
+          run: echo $DATA > /home/runner/work/AutoNote/AutoNote/app/google-services.json
         - name: Checkout
           uses: actions/checkout@v3
         - name: Set execution flag for gradlew
