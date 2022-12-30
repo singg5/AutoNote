@@ -1,5 +1,6 @@
 package com.averis.autonote
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -49,6 +50,7 @@ class Calculator : Fragment(R.layout.fragment_calculator), AdapterView.OnItemSel
                 //..
             }
 
+            @SuppressLint("StringFormatInvalid")
             override fun onItemSelected(
                 parent: AdapterView<*>?,
                 view: View?,
@@ -79,6 +81,7 @@ class Calculator : Fragment(R.layout.fragment_calculator), AdapterView.OnItemSel
                         val numberTwo = editorTwo.text.toString()
                         val numberThree = editorThree.text.toString()
                         editorOne.hint = vehicle.lkm
+                        editorThree.hint = getString(R.string.travel_costs + R.string.currency_hint)
                         when(numberOne.isNotEmpty() || numberTwo.isNotEmpty() || numberThree.isNotEmpty()) {
                             true -> {
 
