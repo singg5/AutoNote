@@ -57,6 +57,7 @@ jobs:
         with:
           name: apk
           path: ${{steps.sign_app.outputs.signedReleaseFile}}
+      - name: Upload Mapping
       - uses: actions/upload-artifact@v1
         with:
           name: mapping.txt
