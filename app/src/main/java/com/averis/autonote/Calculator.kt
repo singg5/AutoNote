@@ -85,7 +85,7 @@ class Calculator : Fragment(R.layout.fragment_calculator), AdapterView.OnItemSel
                             }
                             else -> Toast.makeText(activity, error, Toast.LENGTH_SHORT).show()
                         }
-                        numberOneString.text = travelCosts
+                        numberOneString.text = getString(R.string.travel_costs)
 //                        vehicle.travelCosts(vehicle.lkm.toDouble(), )
                     }
                     2 -> {
