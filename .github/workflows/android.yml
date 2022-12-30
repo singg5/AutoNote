@@ -12,7 +12,8 @@ jobs:
       name: Unit Tests
       runs-on: ubuntu-latest
       steps:
-        - uses: actions/checkout@v3
+        - name: Checkout
+          uses: actions/checkout@v3
         - name: Set execution flag for gradlew
           run: chmod +x gradlew
         - name: Unit tests
@@ -76,6 +77,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: apk/release/app-release-unsigned-signed.apk
+          asset_path: apk/app-release-unsigned-signed.apk
           asset_name: ${{ github.event.repository.name }}.apk
           asset_content_type: application/apk
