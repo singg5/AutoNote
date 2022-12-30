@@ -51,6 +51,10 @@ jobs:
         with:
           name: apk
           path: ${{steps.sign_app.outputs.signedReleaseFile}}
+      - uses: actions/upload-artifact@v1
+        with:
+          name: mapping.txt
+          path: app/build/outputs/mapping/release/mapping.txt
 
   release:
     name: Release APK
@@ -80,3 +84,19 @@ jobs:
           asset_path: apk/app-release-unsigned-signed.apk
           asset_name: ${{ github.event.repository.name }}.apk
           asset_content_type: application/apk
+  deploy-firebase:
+    name: Release APK
+    needs: release
+    runs-on: ubuntu-latest
+    steps:
+    - name: Download APK from build
+      uses: actions/download-artifact@v1
+      with:
+        name: apk
+    - name: upload artifact to Firebase App Distribution
+      uses: wzieba/Firebase-Distribution-Github-Action@v1
+      with:
+          appId: ${{secrets.FIREBASE_APP_ID}}
+          token: ${{secrets.FIREBASE_TOKEN}}
+          groups: QA
+          file: app-release-unsigned-signed.apk
