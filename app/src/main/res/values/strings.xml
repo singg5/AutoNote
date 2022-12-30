@@ -16,6 +16,9 @@
     <string name="advices_for_driver">Advices for driver</string>
     <string name="average_fuel_burn">Average fuel burn</string>
     <string name="travel_costs">Travel costs</string>
+    <string name="fuel_price_liters">Fuel price per liter</string>
+    <string name="fuel_price_gallons">Fuel price per gallon</string>
+    <string name="currency_hint">USD</string>
     <string name="PH">placeholder</string>
     <string name="PH_TWO">placeholder2</string>
 
