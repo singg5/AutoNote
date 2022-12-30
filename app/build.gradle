@@ -41,14 +41,6 @@ android {
     }
     kotlinOptions {
         jvmTarget = "11"
-        useIR = true
-    }
-    buildFeatures {
-        compose true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion compose_version
-        kotlinCompilerVersion '1.4.31'
     }
 }
 
