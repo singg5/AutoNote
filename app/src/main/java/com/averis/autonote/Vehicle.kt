@@ -1,12 +1,13 @@
 package com.averis.autonote
 
-import java.text.DecimalFormat
-
-class Vehicle(var name: String, fuelcap: Int) {
+class Vehicle(var name: String, fuelCap: Int) {
     var lkm: String? = null
 
-    fun fuel(fuelTanked:Double, kilometers:Double): Double {
+    fun averageFuelBurn(fuelTanked:Double, kilometers:Double): Double {
         return (fuelTanked/kilometers)*100
+    }
+    fun travelCosts(lkm: Double, kilometers: Double, fuelPrice: Double): Double {
+        return (lkm*kilometers)/100*fuelPrice
     }
     fun removeTrailingZeros(num: String): String{
         if(!num.contains('.'))

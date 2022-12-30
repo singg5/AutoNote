@@ -13,17 +13,6 @@ import kotlin.math.round
 
 
 class MainActivity : AppCompatActivity(R.layout.activity_main), AdapterView.OnItemSelectedListener {
-    lateinit var binding: ActivityMainBinding
-
-    lateinit var spinner: Spinner
-    lateinit var number1: EditText
-    lateinit var number2: EditText
-    lateinit var oblicz: Button
-
-
-//    lateinit var result: TextView
-
-    var vehicle = Vehicle("Test", 66)
 
     fun Double.round(decimals: Int): Double {
         var multiplier = 1.0
@@ -40,7 +29,8 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), AdapterView.OnIt
         return "%.0f".format(numInDouble)
     }
 
-    // TODO: Opisać funkcje
+    lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -62,18 +52,11 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), AdapterView.OnIt
 
 
 
-//        result = findViewById(R.id.result)
+
         val df = DecimalFormat("#.##")
         df.roundingMode = RoundingMode.DOWN
-//        result.text = "text"
-//        var arrayAdapter = ArrayAdapter.createFromResource(
-//            this,
-//            R.array.picks,
-//            android.R.layout.simple_spinner_item
-//        )
-//        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
-//        spinner.adapter = arrayAdapter
+
 //        // TODO: Dokumentacja
 //        // przy kliknięciu oblicza paliwo, jednak gdy nie ma
 //        // danych nic nadaje że jest błąd w konsoli
