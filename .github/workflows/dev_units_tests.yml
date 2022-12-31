@@ -1,0 +1,22 @@
+name: Tests DEV branch
+on:
+  push:
+    branches:
+      - dev
+jobs:
+  unit_tests:
+      name: Unit Tests
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v3
+        - name: Create file
+          run: touch /home/runner/work/AutoNote/AutoNote/app/google-services.json | base64
+        - name: Putting data
+          env:
+            DATA: ${{ secrets.GOOGLE_SERVICES_JSON }}
+          run: echo $DATA > /home/runner/work/AutoNote/AutoNote/app/google-services.json
+        - name: Set execution flag for gradlew
+          run: chmod +x gradlew
+        - name: Unit tests
+          run: ./gradlew test
