@@ -33,11 +33,9 @@ class Calculator : Fragment(R.layout.fragment_calculator), AdapterView.OnItemSel
         val result = view.findViewById<TextView>(R.id.result)
         val numberOneString = view.findViewById<TextView>(R.id.num1Str)
         val numberTwoString = view.findViewById<TextView>(R.id.num2Str)
+        val numberThreeString = view.findViewById<TextView>(R.id.num3Str)
 
         val error = R.string.error_field_empty
-
-        val kilometersTraveled = getString(R.string.kilometers_traveled)
-        val travelCosts = getString(R.string.travel_costs)
 
         result.text = "- l/100km"
 
@@ -62,10 +60,21 @@ class Calculator : Fragment(R.layout.fragment_calculator), AdapterView.OnItemSel
             ) {
                 when (position) {
                     0 -> {
-                        info.text = getString(R.string.text_for_average_fuel)
                         editorOne.text = null
                         editorTwo.text = null
                         editorThree.text = null
+                        // Names
+                        info.text = getString(R.string.text_for_average_fuel)
+                        numberOneString.text = getString(R.string.kilometers_traveled)
+                        numberTwoString.text = getString(R.string.fuel_tanked)
+                        numberThreeString.text = getString(R.string.fuel_price_liters)
+                        editorOne.hint = getString(R.string.distance)
+                        editorTwo.hint = getString(R.string.fuel)
+                        when(vehicle.price){
+                            null -> editorThree.hint = "00.00"
+                            else -> editorThree.setText(vehicle.price)
+                        }
+                        result.text = "- l/100km"
 
                         calculate.setOnClickListener {
                             val distance = editorOne.text.toString()
@@ -86,8 +95,7 @@ class Calculator : Fragment(R.layout.fragment_calculator), AdapterView.OnItemSel
                                             vehicle.averageFuelBurn = vehicle.removeTrailingZeros(fuelResultStr)
                                             result.text = "${vehicle.averageFuelBurn} l/100km"
                                             fuelPrice.text = "${vehicle.removeTrailingZeros(fuelPriceVehicle)} ${getString(R.string.currency_hint)}"
-//                                            Toast.makeText(activity, "TODO: Make averagefuelburn function with price", Toast.LENGTH_SHORT).show()
-                                    }
+                                        }
                                         else -> {
                                             val wynikPaliwa =
                                                 vehicle.averageFuelBurnCalc(distance.toDouble(), fuelTanked.toDouble())
@@ -112,6 +120,12 @@ class Calculator : Fragment(R.layout.fragment_calculator), AdapterView.OnItemSel
                         editorOne.text = null
                         editorTwo.text = null
                         editorThree.text = null
+                        result.text = "- l/100km"
+                        when(vehicle.averageFuelBurn){
+                            null -> editorOne.hint = "00.00"
+                            else -> editorOne.setText(vehicle.averageFuelBurn.toString())
+                        }
+
                         editorThree.hint = "${getString(R.string.travel_costs)} (${getString(R.string.optional)})"
                         numberOneString.text = getString(R.string.travel_costs)
 
@@ -122,11 +136,9 @@ class Calculator : Fragment(R.layout.fragment_calculator), AdapterView.OnItemSel
                                 }
                                 else -> Toast.makeText(activity, error, Toast.LENGTH_SHORT).show()
                             }
+                            it.hideKeyboard()
                         }
-                        when(vehicle.averageFuelBurn){
-                            null -> editorOne.hint = "00.00"
-                            else -> editorOne.hint = vehicle.averageFuelBurn
-                        }
+
 
 
 //                        vehicle.travelCosts(vehicle.lkm.toDouble(), )

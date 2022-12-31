@@ -5,7 +5,7 @@
     <string name="note">Notatnik</string>
     <string name="calculator">Kalkulator</string>
     <string name="calculate">Oblicz</string>
-    <string name="result">Wynik</string>
+    <string name="result">Wynik:</string>
     <string name="fuel">Paliwo</string>
     <string name="distance">Odległość</string>
     <string name="kilometers_traveled">Przejechane kilometry</string>
