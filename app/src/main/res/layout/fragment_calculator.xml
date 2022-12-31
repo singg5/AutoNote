@@ -6,7 +6,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Calculator">
 
-<!--    TODO: rozdupcyl sem layout-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,10 +20,7 @@
                 android:id="@+id/spinner"
                 android:layout_width="260dp"
                 android:layout_height="50dp"
-                android:layout_marginStart="50dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="50dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginTop="5sp"
                 android:backgroundTint="@color/black"
                 android:contentDescription="@string/app_name"
                 android:dropDownWidth="300dp"
@@ -95,14 +91,13 @@
 
             <EditText
                 android:id="@+id/editorOne"
-                android:layout_width="wrap_content"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:ems="10"
                 android:hint="@string/distance"
                 android:inputType="numberDecimal"
                 android:minHeight="52dp"
-                android:textColorHint="@color/material_dynamic_neutral50"
+                android:textColorHint="@color/grey"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
@@ -110,14 +105,13 @@
 
             <EditText
                 android:id="@+id/editorTwo"
-                android:layout_width="wrap_content"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:ems="10"
                 android:hint="@string/fuel"
                 android:inputType="numberDecimal"
                 android:minHeight="52dp"
-                android:textColorHint="@color/material_dynamic_neutral50"
+                android:textColorHint="@color/grey"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
@@ -125,14 +119,13 @@
 
             <EditText
                 android:id="@+id/editorThree"
-                android:layout_width="wrap_content"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:ems="10"
+                android:hint="Fetching..."
                 android:inputType="numberDecimal"
                 android:minHeight="52dp"
-                android:hint="Fetching..."
-                android:textColorHint="@color/material_dynamic_neutral50"
+                android:textColorHint="@color/grey"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.502"
                 app:layout_constraintStart_toStartOf="parent"
