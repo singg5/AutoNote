@@ -5,7 +5,7 @@
     <string name="note">Notatnik</string>
     <string name="calculator">Kalkulator</string>
     <string name="calculate">Oblicz</string>
-    <string name="result">Wynik</string>
+    <string name="result">Wynik:</string>
     <string name="fuel">Paliwo</string>
     <string name="distance">Odległość</string>
     <string name="kilometers_traveled">Przejechane kilometry</string>
@@ -19,4 +19,5 @@
     <string name="fuel_price_liters">Cena paliwa za litr</string>
     <string name="fuel_price_gallons">Cena paliwa za galon</string>
     <string name="optional">opcjonalnie</string>
+    <string name="text_for_travel_costs">Obliczę dla Ciebie koszty podróży</string>
 </resources>
