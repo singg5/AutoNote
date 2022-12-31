@@ -99,41 +99,17 @@ jobs:
     needs: release
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Create file
-        run: touch /home/runner/work/AutoNote/AutoNote/app/google-services.json | base64
-      - name: Putting data
-        env:
-            DATA: ${{ secrets.GOOGLE_SERVICES_JSON }}
-        run: echo $DATA > /home/runner/work/AutoNote/AutoNote/app/google-services.json
-      - name: Setup JDK
-        uses: actions/setup-java@v3
+      - name: Download APK from build
+        uses: actions/download-artifact@v1
         with:
-          distribution: corretto
-          java-version: "11"
-      - name: Set execution flag for gradlew
-        run: chmod +x gradlew
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v2
-      - name: Build AutoNote
-        run: ./gradlew assembleRelease
-      - name: Sign APK
-        uses: r0adkll/sign-android-release@v1
-        id: sign_app
-        with:
-          releaseDirectory: app/build/outputs/apk/release
-          signingKeyBase64: ${{ secrets.SIGNING_KEY }}
-          alias: ${{ secrets.ALIAS }}
-          keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
-          keyPassword: ${{ secrets.KEY_PASSWORD }}
+          name: apk
       - name: Upload artifact to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1.4.0
         with:
           appId: ${{secrets.FIREBASE_APP_ID}}
           token: ${{secrets.FIREBASE_TOKEN}}
           groups: qa
-          file: app/build/outputs/apk/release/app-release-unsigned.apk
+          file: apk/app-release-unsigned-signed.apk
 
 #     name: Deploy to Play Store
 
