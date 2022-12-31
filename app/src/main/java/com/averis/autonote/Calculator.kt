@@ -63,14 +63,15 @@ class Calculator : Fragment(R.layout.fragment_calculator), AdapterView.OnItemSel
                 when (position) {
                     0 -> {
                         info.text = getString(R.string.text_for_average_fuel)
+                        editorOne.text = null
+                        editorTwo.text = null
+                        editorThree.text = null
 
                         calculate.setOnClickListener {
                             val distance = editorOne.text.toString()
                             val fuelTanked = editorTwo.text.toString()
                             val price = editorThree.text.toString()
-                            editorOne.text = null
-                            editorTwo.text = null
-                            editorThree.text = null
+
 
 
                             when (fuelTanked.isNotEmpty() || distance.isNotEmpty()) {
