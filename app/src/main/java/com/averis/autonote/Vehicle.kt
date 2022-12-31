@@ -1,12 +1,15 @@
 package com.averis.autonote
 
 class Vehicle(var name: String, fuelCap: Int) {
-    var lkm: String? = null
+    var averageFuelBurn: String? = null
 
-    fun averageFuelBurn(fuelTanked:Double, kilometers:Double): Double {
+    fun averageFuelBurnCalc(fuelTanked:Double, kilometers:Double): Double {
         return (fuelTanked/kilometers)*100
     }
-    fun travelCosts(lkm: Double, kilometers: Double, fuelPrice: Double): Double {
+    fun averageFuelBurnPriceCalc(fuelTanked:Double, price: Double): Double {
+        return fuelTanked*price
+    }
+    fun travelCostsCalc(lkm: Double, kilometers: Double, fuelPrice: Double): Double {
         return (lkm*kilometers)/100*fuelPrice
     }
     fun removeTrailingZeros(num: String): String{

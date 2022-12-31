@@ -18,4 +18,6 @@
     <string name="currency_hint">PLN</string>
     <string name="fuel_price_liters">Cena paliwa za litr</string>
     <string name="fuel_price_gallons">Cena paliwa za galon</string>
+    <string name="optional">opcjonalnie</string>
+    <string name="optional">o</string>
 </resources>
