@@ -11,10 +11,10 @@ android {
 
     defaultConfig {
         applicationId "com.averis.autonote"
-        minSdk 27
+        minSdk 28
         targetSdk 33
         versionCode 10
-        versionName "0.0.24"
+        versionName "0.0.25"
         ext{
             version_name = versionName
         }
