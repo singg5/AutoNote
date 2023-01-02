@@ -1,3 +1,6 @@
-p{
+*{
+    background-color: aqua;
+}
+body.p{
     font-size: 10em;
 }
