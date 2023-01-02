@@ -171,35 +171,6 @@ class Calculator : Fragment(R.layout.fragment_calculator), AdapterView.OnItemSel
                 }
             }
         }
-
-
-
-//        calculate.setOnClickListener {
-//            val numberOne = distance.text.toString()
-//            val numberTwo = fuelTanked.text.toString()
-//            val error = R.string.error_field_empty
-//            when(numberOne.isNotEmpty() || numberTwo.isNotEmpty()) {
-//                true -> {
-//                    val wynikPaliwa = vehicle.fuel(numberTwo.toDouble(), numberOne.toDouble())
-//                    val wynikPaliwaStr: String = df.format(wynikPaliwa)
-//                    vehicle.lkm = vehicle.removeTrailingZeros(wynikPaliwaStr)
-//                    result.text = "${vehicle.lkm} l/100km"
-//                }
-//                else -> Toast.makeText(activity,error ,Toast.LENGTH_SHORT).show()
-//            }
-//            if (numberOne.isEmpty()) {
-//                Toast.makeText(activity,error, Toast.LENGTH_SHORT).show()
-//            } else if (numberTwo.isEmpty()){
-//                Toast.makeText(activity,error, Toast.LENGTH_SHORT).show()
-//            }
-//            else {
-//                val wynikPaliwa = vehicle.fuel(numberTwo.toDouble(), numberOne.toDouble())
-//                val wynikPaliwaStr: String = df.format(wynikPaliwa)
-//                vehicle.lkm = vehicle.removeTrailingZeros(wynikPaliwaStr)
-//                result.text = "${vehicle.lkm} l/100km"
-//
-//            }
-//        }
         return view
     }
     fun View.hideKeyboard() {
