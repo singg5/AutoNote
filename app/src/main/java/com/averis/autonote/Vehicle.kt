@@ -1,8 +1,8 @@
 package com.averis.autonote
 
 class Vehicle(var name: String, fuelCap: Int) {
-    var averageFuelBurn: String? = null
-    var price: String? = null
+    var averageFuelBurn: Any? = null
+    var price: Any? = null
 
     fun averageFuelBurnCalc(fuelTanked:Double, kilometers:Double): Double {
         return (fuelTanked/kilometers)*100
