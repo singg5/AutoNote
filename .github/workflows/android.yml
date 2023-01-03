@@ -1,17 +1,19 @@
 name: CI/CD Android App
 env:
-  VERSION: '0.0.25'
+  VERSION: '0.0.26'
 on:
   push:
     branches:
       - main
+    paths-ignore:
+      - 'website/**'
     tags:
       - "v*"
 jobs:
   apk:
     name: Generate APK
     runs-on: ubuntu-latest
-    if: "!contains(github.event.head_commit.message, 'Website:')"
+    # if: "!contains(github.event.head_commit.message, 'Website:')"
     steps:
       - name: Checkout
         uses: actions/checkout@v3
