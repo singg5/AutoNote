@@ -8,6 +8,7 @@ on:
     paths-ignore:
       - '**.md'
       - 'website/**'
+      - '**.yml'
 jobs:
   apk:
     name: Generate APK
@@ -110,7 +111,7 @@ jobs:
         with:
           appId: ${{secrets.FIREBASE_APP_ID}}
           serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
-          releaseNotes: ${{ PR.outputs.pr_body }}
+          releaseNotes: ${{ steps.PR.outputs.pr_body }}
           groups: qa
           file: apk/app-release-unsigned-signed.apk
 

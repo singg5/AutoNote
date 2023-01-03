@@ -1,4 +1,4 @@
-name: Tests DEV branch
+name: Unit tests application
 on:
   fork:
     branches:
@@ -8,6 +8,7 @@ on:
       - 'feature/**'
     paths-ignore:
       - 'website/**'
+      - '**.yml'
   pull_request:
     branches:
       - main
@@ -15,6 +16,7 @@ on:
     paths-ignore:
       - '**.md'
       - 'website/**'
+      - '**.yml'
 jobs:
   unit_tests:
       name: Unit Tests
