@@ -109,7 +109,7 @@ jobs:
         with:
           appId: ${{secrets.FIREBASE_APP_ID}}
           serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
-          releaseNotes: ${{ PR.outputs.pr_body }}
+          releaseNotes: ${{ PR.pr_body }}
           groups: qa
           file: apk/app-release-unsigned-signed.apk
 
