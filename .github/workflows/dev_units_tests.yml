@@ -2,7 +2,12 @@ name: Tests DEV branch
 on:
   push:
     branches:
+      - 'feature/**'
+  pull_request:
+    branches:
       - dev
+    paths-ignore:
+      - 'website/**'
 jobs:
   unit_tests:
       name: Unit Tests
