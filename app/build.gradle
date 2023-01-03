@@ -14,7 +14,7 @@ android {
         minSdk 28
         targetSdk 33
         versionCode 10
-        versionName "0.0.27"
+        versionName "0.0.28"
         ext{
             version_name = versionName
         }
