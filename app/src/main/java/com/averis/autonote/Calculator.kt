@@ -1,3 +1,6 @@
+/*
+ Created by @noriban
+*/
 package com.averis.autonote
 
 import android.content.Context
