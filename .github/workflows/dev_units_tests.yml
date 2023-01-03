@@ -3,9 +3,11 @@ on:
   push:
     branches:
       - 'feature/**'
+    paths-ignore:
+      - 'website/**'
   pull_request:
     branches:
-      - dev
+      - main
     paths-ignore:
       - 'website/**'
 jobs:
