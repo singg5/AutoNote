@@ -1,0 +1,172 @@
+name: AutoNote release
+env:
+  VERSION: '0.0.26' # TODO: Change after tests.
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**.md'
+      - 'website/**'
+jobs:
+  apk:
+    name: Generate APK
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Create file
+        run: touch /home/runner/work/AutoNote/AutoNote/app/google-services.json | base64
+      - name: Putting data
+        env:
+            DATA: ${{ secrets.GOOGLE_SERVICES_JSON }}
+        run: echo $DATA > /home/runner/work/AutoNote/AutoNote/app/google-services.json
+      - name: Setup JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: corretto
+          java-version: "11"
+          cache: 'gradle'
+      - name: Set execution flag for gradlew
+        run: chmod +x gradlew
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v2
+      - name: Build AutoNote
+        run: ./gradlew assembleRelease
+      - name: Sign APK
+        uses: r0adkll/sign-android-release@v1
+        id: sign_app
+        with:
+          releaseDirectory: app/build/outputs/apk/release
+          signingKeyBase64: ${{ secrets.SIGNING_KEY }}
+          alias: ${{ secrets.ALIAS }}
+          keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
+          keyPassword: ${{ secrets.KEY_PASSWORD }}
+      - name: Upload APK
+        uses: actions/upload-artifact@v1
+        with:
+          name: apk
+          path: ${{steps.sign_app.outputs.signedReleaseFile}}
+
+  # release:
+  #   name: Release APK
+  #   needs: apk
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Download APK from build
+  #       uses: actions/download-artifact@v1
+  #       with:
+  #         name: apk
+  #     - name: Create Release
+  #       id: create_release
+  #       uses: actions/create-release@v1
+  #       env:
+  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #       with:
+  #         tag_name: ${{ env.VERSION }}
+  #         release_name: ${{ github.event.repository.name }} v${{ env.VERSION }}
+  #         prerelease: true
+  #     - name: Upload Release APK
+  #       id: upload_release_asset
+  #       uses: actions/upload-release-asset@v1.0.1
+  #       env:
+  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #       with:
+  #         upload_url: ${{ steps.create_release.outputs.upload_url }}
+  #         asset_path: apk/app-release-unsigned-signed.apk
+  #         asset_name: ${{ github.event.repository.name }}.apk
+  #         asset_content_type: application/apk
+
+
+  deploy-firebase:
+    name: Release APK to Firebase testers
+    needs: apk
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Pull Request description for changelog
+        uses: 8BitJonny/gh-get-current-pr@2.2.0
+      - run: echo "PR ${prNumber} ${prTitle} at ${prUrl} is ${prJSON}"
+        if: steps.PR.outputs.pr_found == 'true'
+        env:
+          # JSON object with the full PR object
+          # toJSON(fromJSON(...pr)) parses it into memory and then format is with pretty-print.
+          prJSON: ${{ toJSON(fromJSON(steps.current_pr.outputs.pr)) }}
+          # Direct access to common PR properties
+          prNumber: ${{ steps.PR.outputs.number }}
+          prUrl: ${{ steps.PR.outputs.pr_url }}
+          prTitle: ${{ steps.PR.outputs.pr_title }}
+          prBody: ${{ steps.PR.outputs.pr_body }}
+          prCreatedAt: ${{ steps.PR.outputs.pr_created_at }}
+          prMergedAt: ${{ steps.PR.outputs.pr_merged_at }}
+          prClosedAt: ${{ steps.PR.outputs.pr_closed_at }}
+          prLabel: ${{ steps.PR.outputs.pr_labels }}
+        id: PR 
+      - name: Download APK from build
+        uses: actions/download-artifact@v1
+        with:
+          name: apk
+      - name: Upload artifact to Firebase App Distribution
+        uses: wzieba/Firebase-Distribution-Github-Action@v1.4.0
+        with:
+          appId: ${{secrets.FIREBASE_APP_ID}}
+          serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
+          releaseNotes: ${{ PR.outputs.pr_body }}
+          groups: qa
+          file: apk/app-release-unsigned-signed.apk
+
+#     name: Deploy to Play Store
+
+# on:
+#   push:
+#     branches:
+#       - master
+
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v2
+#       - name: Generate Release APK
+#         run: ./gradlew assembleRelease
+#       - name: Sign APK
+#         uses: r0adkll/sign-android-release@v1
+#         # ID used to access action output
+#         id: sign_app
+#         with:
+#           releaseDirectory: app/build/outputs/apk/release
+#           signingKeyBase64: ${{ secrets.SIGNING_KEY }}
+#           alias: ${{ secrets.ALIAS }}
+#           keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
+#           keyPassword: ${{ secrets.KEY_PASSWORD }}
+#       - uses: actions/upload-artifact@master
+#         with:
+#           name: release.apk
+#           path: ${{steps.sign_app.outputs.signedReleaseFile}}
+#       - uses: actions/upload-artifact@master
+#         with:
+#           name: mapping.txt
+#           path: app/build/outputs/mapping/release/mapping.txt
+
+#   deploy-play-store:
+#     needs: [build]
+#     runs-on: ubuntu-latest
+#     steps:
+#       # 1
+#       - uses: actions/download-artifact@master
+#         with:
+#           name: release.apk
+#       - uses: actions/download-artifact@master
+#         with:
+#           name: mapping.txt
+#       # 2
+#       - name: Publish to Play Store internal test track
+#         uses: r0adkll/upload-google-play@v1
+#         with:
+#           serviceAccountJsonPlainText: ${{ secrets.SERVICE_ACCOUNT_JSON }}
+#           # 3
+#           packageName: com.raywenderlich.android.rwquotes
+#           releaseFile: app-release-unsigned-signed.apk
+#           track: internal
+#           userFraction: 0.50
+#           mappingFile: mapping.txt
