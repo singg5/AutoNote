@@ -7,13 +7,10 @@ on:
       - main
     paths-ignore:
       - 'website/**'
-    tags:
-      - "v*"
 jobs:
   apk:
     name: Generate APK
     runs-on: ubuntu-latest
-    # if: "!contains(github.event.head_commit.message, 'Website:')"
     steps:
       - name: Checkout
         uses: actions/checkout@v3
