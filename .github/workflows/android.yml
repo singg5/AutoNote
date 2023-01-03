@@ -78,6 +78,7 @@ jobs:
 
   deploy-firebase:
     name: Release APK to Firebase testers
+    needs: apk
     runs-on: ubuntu-latest
     steps:
       # - name: Get Pull Request description for changelog
