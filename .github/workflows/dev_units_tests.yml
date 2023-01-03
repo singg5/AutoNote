@@ -1,5 +1,8 @@
 name: Tests DEV branch
 on:
+  fork:
+    branches:
+      - '**'
   push:
     branches:
       - 'feature/**'
@@ -8,7 +11,9 @@ on:
   pull_request:
     branches:
       - main
+      - dev
     paths-ignore:
+      - '**.md'
       - 'website/**'
 jobs:
   unit_tests:
