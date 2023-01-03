@@ -82,24 +82,24 @@ jobs:
     needs: apk
     runs-on: ubuntu-latest
     steps:
-      # - name: Get Pull Request description for changelog
-      #   uses: 8BitJonny/gh-get-current-pr@2.2.0
-      #   id: PR
-      # - run: echo "PR ${prNumber} ${prTitle} at ${prUrl} is ${prJSON}"
-      #   if: steps.PR.outputs.pr_found == 'true'
-      #   env:
-      #     # JSON object with the full PR object
-      #     # toJSON(fromJSON(...pr)) parses it into memory and then format is with pretty-print.
-      #     prJSON: ${{ toJSON(fromJSON(steps.current_pr.outputs.pr)) }}
-      #     # Direct access to common PR properties
-      #     prNumber: ${{ steps.PR.outputs.number }}
-      #     prUrl: ${{ steps.PR.outputs.pr_url }}
-      #     prTitle: ${{ steps.PR.outputs.pr_title }}
-      #     prBody: ${{ steps.PR.outputs.pr_body }}
-      #     prCreatedAt: ${{ steps.PR.outputs.pr_created_at }}
-      #     prMergedAt: ${{ steps.PR.outputs.pr_merged_at }}
-      #     prClosedAt: ${{ steps.PR.outputs.pr_closed_at }}
-      #     prLabel: ${{ steps.PR.outputs.pr_labels }}
+      - name: Get Pull Request description for changelog
+        uses: 8BitJonny/gh-get-current-pr@2.2.0
+        id: PR
+      - run: echo "PR ${prNumber} ${prTitle} at ${prUrl} is ${prJSON}"
+        if: steps.PR.outputs.pr_found == 'true'
+        env:
+          # JSON object with the full PR object
+          # toJSON(fromJSON(...pr)) parses it into memory and then format is with pretty-print.
+          prJSON: ${{ toJSON(fromJSON(steps.current_pr.outputs.pr)) }}
+          # Direct access to common PR properties
+          prNumber: ${{ steps.PR.outputs.number }}
+          prUrl: ${{ steps.PR.outputs.pr_url }}
+          prTitle: ${{ steps.PR.outputs.pr_title }}
+          prBody: ${{ steps.PR.outputs.pr_body }}
+          prCreatedAt: ${{ steps.PR.outputs.pr_created_at }}
+          prMergedAt: ${{ steps.PR.outputs.pr_merged_at }}
+          prClosedAt: ${{ steps.PR.outputs.pr_closed_at }}
+          prLabel: ${{ steps.PR.outputs.pr_labels }}
       - name: Download APK from build
         uses: actions/download-artifact@v1
         with:
@@ -109,7 +109,7 @@ jobs:
         with:
           appId: ${{secrets.FIREBASE_APP_ID}}
           serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
-          releaseNotes: ${{ github.event.head_commit.message }}
+          releaseNotes: ${{ PR.outputs.pr_body }}
           groups: qa
           file: apk/app-release-unsigned-signed.apk
 
