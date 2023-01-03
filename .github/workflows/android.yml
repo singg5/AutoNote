@@ -100,7 +100,7 @@ jobs:
       #     prClosedAt: ${{ steps.PR.outputs.pr_closed_at }}
       #     prLabel: ${{ steps.PR.outputs.pr_labels }}
       - name: Download APK from build
-        uses: actions/download-artifact@v3.0.0
+        uses: actions/download-artifact@v1
         with:
           name: apk
       - name: Upload artifact to Firebase App Distribution
