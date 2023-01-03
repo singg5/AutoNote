@@ -1,5 +1,5 @@
 # AutoNote 
 
-[![CI/CD](https://github.com/noriban/AutoNote/actions/workflows/android.yml/badge.svg?branch=main)](https://github.com/noriban/AutoNote/actions/workflows/android.yml) <br>
+[![AutoNote release](https://github.com/noriban/AutoNote/actions/workflows/build_release.yml/badge.svg)](https://github.com/noriban/AutoNote/actions/workflows/build_release.yml) <br>
 
 Your car companion
