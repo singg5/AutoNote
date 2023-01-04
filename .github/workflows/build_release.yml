@@ -1,6 +1,6 @@
 name: AutoNote release
 env:
-  VERSION: '0.1.0' # TODO: Change after tests.
+  VERSION: '0.0.31' # TODO: Change after tests.
 on:
   push:
     branches:
@@ -65,7 +65,7 @@ jobs:
         with:
           tag_name: ${{ env.VERSION }}
           release_name: ${{ github.event.repository.name }} v${{ env.VERSION }}
-          prerelease: false
+          prerelease: true
       - name: Upload Release APK
         id: upload_release_asset
         uses: actions/upload-release-asset@v1.0.1
