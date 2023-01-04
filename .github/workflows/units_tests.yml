@@ -40,8 +40,8 @@ jobs:
   #   needs: unit_tests
   #   strategy:
   #     matrix:
-  #       api-level: [30, 31, 32, 33]
-  #       target: [default]
+  #       api-level: [28, 29, 30, 31, 32, 33]
+  #       target: [google_apis]
   #   steps:
   #     - name: checkout
   #       uses: actions/checkout@v3
