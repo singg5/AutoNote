@@ -1,4 +1,4 @@
-name: AutoNote release
+name: AutoNote beta release
 env:
   VERSION: '0.0.26' # TODO: Change after tests.
 on:
