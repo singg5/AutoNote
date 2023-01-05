@@ -6,10 +6,12 @@
 version: 2
 updates:
   - package-ecosystem: "github-actions"
+    target-branch: "development"
     directory: "/" # Location of package manifests
     schedule:
       interval: "monthly"
   - package-ecosystem: "gradle"
+    target-branch: "development"
     directory: "/" # Location of package manifests
     schedule:
       interval: "monthly"
