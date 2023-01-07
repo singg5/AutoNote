@@ -14,12 +14,15 @@ android {
         minSdk 28
         targetSdk 33
         versionCode 10
-        versionName "0.0.31"
+        versionName "0.0.35"
         ext{
             version_name = versionName
         }
-        task printVersionName {
-            println project.android.defaultConfig.versionName
+//        task printVersionName {
+//            println project.android.defaultConfig.versionName
+//        }
+        task printVersionInformation {
+            println defaultConfig.versionName + " (" + defaultConfig.versionCode + ")"
         }
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
