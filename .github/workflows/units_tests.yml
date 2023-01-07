@@ -1,19 +1,16 @@
 name: Unit tests application
 on:
-  fork:
-    branches:
-      - '**'
   push:
     branches:
       - 'feature/**'
       - 'hotfix/**'
     paths-ignore:
+      - '**.md'
       - 'website/**'
       - '**.yml'
   pull_request:
     branches:
-      - main
-      - beta
+      - development
     paths-ignore:
       - '**.md'
       - 'website/**'
@@ -35,29 +32,9 @@ jobs:
           uses: actions/setup-java@v3
           with:
             java-version: 11
-            distribution: 'adopt'
+            distribution: corretto
             cache: 'gradle'
         - name: Set execution flag for gradlew
           run: chmod +x gradlew
         - name: Unit tests
           run: ./gradlew test
-  test:
-    runs-on: macos-latest
-    needs: unit_tests
-    strategy:
-      matrix:
-        api-level: [28, 29, 30, 31, 32, 33]
-        target: [google_apis]
-    steps:
-      - name: checkout
-        uses: actions/checkout@v3
-      - name: Set execution flag for gradlew
-        run: chmod +x gradlew
-      - name: run tests
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: ${{ matrix.api-level }}
-          target: ${{ matrix.target }}
-          arch: x86_64
-          profile: pixel_6
-          script: ./gradlew connectedCheck

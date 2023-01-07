@@ -1,6 +1,4 @@
 name: AutoNote release
-env:
-  VERSION: '0.0.31' # TODO: Change after tests.
 on:
   push:
     branches:
@@ -26,7 +24,7 @@ jobs:
         uses: actions/setup-java@v3
         with:
           distribution: corretto
-          java-version: "11"
+          java-version: 11
           cache: 'gradle'
       - name: Set execution flag for gradlew
         run: chmod +x gradlew
@@ -44,7 +42,7 @@ jobs:
           keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
           keyPassword: ${{ secrets.KEY_PASSWORD }}
       - name: Upload APK
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v3
         with:
           name: apk
           path: ${{steps.sign_app.outputs.signedReleaseFile}}
@@ -53,8 +51,23 @@ jobs:
     needs: apk
     runs-on: ubuntu-latest
     steps:
+      - name: Setup JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: corretto
+          java-version: 11
+          cache: 'gradle'
+      - name: Set execution flag for gradlew
+        run: chmod +x gradlew
+      - name: Get version
+        run: |
+            echo 'VERSION_INFORMATION<<EOF' >> $GITHUB_ENV
+            ./gradlew -q printVersionInformation >> $GITHUB_ENV
+            echo 'EOF' >> $GITHUB_ENV
+      - name: Check version
+        run: echo "App version is ${{ env.VERSION_INFORMATION }}"
       - name: Download APK from build
-        uses: actions/download-artifact@v1
+        uses: actions/download-artifact@v3
         with:
           name: apk
       - name: Create Release
@@ -63,12 +76,12 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ env.VERSION }}
-          release_name: ${{ github.event.repository.name }} v${{ env.VERSION }}
+          tag_name: ${{ env.VERSION_INFORMATION }}
+          release_name: ${{ github.event.repository.name }} ${{ env.VERSION_INFORMATION }}
           prerelease: true
       - name: Upload Release APK
         id: upload_release_asset
-        uses: actions/upload-release-asset@v1.0.1
+        uses: actions/upload-release-asset@v1.0.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
