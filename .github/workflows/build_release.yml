@@ -54,7 +54,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Create file
-          run: touch /home/runner/work/AutoNote/AutoNote/app/google-services.json | base64
+        run: touch /home/runner/work/AutoNote/AutoNote/app/google-services.json | base64
       - name: Putting data
         env:
           DATA: ${{ secrets.GOOGLE_SERVICES_JSON }}
