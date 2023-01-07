@@ -10,8 +10,8 @@ on:
       - '**.yml'
 jobs:
   test:
+    name: Hardware-accelerated Android emulator test
     runs-on: macos-latest
-    needs: unit_tests
     strategy:
       matrix:
         api-level: [28, 29, 30, 31, 32, 33]
