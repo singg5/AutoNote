@@ -51,6 +51,8 @@ jobs:
     needs: apk
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
       - name: Download APK from build
         uses: actions/download-artifact@v3
         with:
