@@ -10,6 +10,7 @@ on:
       - '**.yml'
 jobs:
   test:
+    name: Hardware-accelerated Android emulator test
     runs-on: macos-latest
     strategy:
       matrix:
