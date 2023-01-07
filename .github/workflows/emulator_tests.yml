@@ -5,6 +5,7 @@ on:
       - main
       - beta
     paths-ignore:
+      - "**" # delete after open repo to public
       - '**.md'
       - 'website/**'
       - '**.yml'
