@@ -25,7 +25,6 @@ jobs:
         with:
           distribution: corretto
           java-version: 11
-          cache: 'gradle'
       - name: Set execution flag for gradlew
         run: chmod +x gradlew
       - name: Setup Android SDK
@@ -33,7 +32,7 @@ jobs:
       - name: Build AutoNote
         run: ./gradlew assembleRelease
       - name: Sign APK
-        uses: r0adkll/sign-android-release@v1
+        uses: noriban/sign-android-release@v3
         id: sign_app
         with:
           releaseDirectory: app/build/outputs/apk/release
@@ -51,6 +50,8 @@ jobs:
     needs: apk
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
       - name: Download APK from build
         uses: actions/download-artifact@v3
         with:
