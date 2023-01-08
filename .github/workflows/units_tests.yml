@@ -33,7 +33,6 @@ jobs:
           with:
             java-version: 11
             distribution: corretto
-            cache: 'gradle'
         - name: Set execution flag for gradlew
           run: chmod +x gradlew
         - name: Unit tests

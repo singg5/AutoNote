@@ -5,6 +5,7 @@ on:
       - main
       - beta
     paths-ignore:
+      - "**" # delete after open repo to public
       - '**.md'
       - 'website/**'
       - '**.yml'
@@ -26,7 +27,6 @@ jobs:
         with:
             java-version: 11
             distribution: corretto
-            cache: 'gradle'
       - name: run tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
