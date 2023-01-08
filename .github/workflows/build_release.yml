@@ -82,7 +82,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           prerelease: false
-          repository: ${{ GITHUB_REPOSITORY }}
+          repository: ${{ env.GITHUB_REPOSITORY }}
           tag_name: ${{ env.VERSION_INFORMATION }}
           name: ${{ github.event.repository.name }} ${{ env.VERSION_INFORMATION }}
           permissions: write
