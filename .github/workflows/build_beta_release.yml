@@ -63,7 +63,7 @@ jobs:
           serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
           releaseNotesFile: ${{ github.repository }}/Changelog.md
           groups: qa
-          file: apk/app-release-unsigned-signed.apk
+          file: app/build/outputs/apk/release/app-release-unsigned-signed.apk
 
 #     name: Deploy to Play Store
 
