@@ -78,34 +78,22 @@ jobs:
         with:
           name: apk
           path: app/build/outputs/apk/release
-      - name: Release
-        uses: softprops/action-gh-release@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          prerelease: false
-          repository: ${{ env.GITHUB_REPOSITORY }}
-          tag_name: ${{ env.VERSION_INFORMATION }}
-          name: ${{ github.event.repository.name }} ${{ env.VERSION_INFORMATION }}
-          permissions: write
-          files: app/build/outputs/apk/release/app-release-unsigned-signed.apk
-        env:
-          GITHUB_REPOSITORY: noriban/AutoNote
-      # - name: Create Release
-      #   id: create_release
-      #   uses: actions/create-release@v1
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   with:
-      #     tag_name: ${{ env.VERSION_INFORMATION }}
-      #     release_name: ${{ github.event.repository.name }} ${{ env.VERSION_INFORMATION }}
-      #     prerelease: true
-      # - name: Upload Release APK
-      #   id: upload_release_asset
-      #   uses: actions/upload-release-asset@v1.0.2
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   with:
-      #     upload_url: ${{ steps.create_release.outputs.upload_url }}
-      #     asset_path: ${{ apk }}
-      #     asset_name: ${{ github.event.repository.name }}.apk
-      #     asset_content_type: application/apk
+       - name: Create Release
+         id: create_release
+         uses: actions/create-release@v1
+         env:
+           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+         with:
+           tag_name: ${{ env.VERSION_INFORMATION }}
+           release_name: ${{ github.event.repository.name }} ${{ env.VERSION_INFORMATION }}
+           prerelease: true
+       - name: Upload Release APK
+         id: upload_release_asset
+         uses: actions/upload-release-asset@v1.0.2
+         env:
+           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+         with:
+           upload_url: ${{ steps.create_release.outputs.upload_url }}
+           asset_path: app/build/outputs/apk/release/app-release-unsigned-signed.apk
+           asset_name: ${{ github.event.repository.name }}.apk
+           asset_content_type: application/apk
