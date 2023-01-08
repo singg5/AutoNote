@@ -32,7 +32,7 @@ jobs:
       - name: Build AutoNote
         run: ./gradlew assembleRelease
       - name: Sign APK
-        uses: noriban/sign-android-release@v3
+        uses: r0adkll/sign-android-release@v1
         id: sign_app
         with:
           releaseDirectory: app/build/outputs/apk/release
@@ -77,23 +77,34 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: apk
-        id: apk
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Release
+        uses: softprops/action-gh-release@v1
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          prerelease: false
+          repository: ${{ GITHUB_REPOSITORY }}
           tag_name: ${{ env.VERSION_INFORMATION }}
-          release_name: ${{ github.event.repository.name }} ${{ env.VERSION_INFORMATION }}
-          prerelease: true
-      - name: Upload Release APK
-        id: upload_release_asset
-        uses: actions/upload-release-asset@v1.0.2
+          name: ${{ github.event.repository.name }} ${{ env.VERSION_INFORMATION }}
+          permissions: write
+          files: apk/app-release-unsigned-signed.apk
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ${{apk}}
-          asset_name: ${{ github.event.repository.name }}.apk
-          asset_content_type: application/apk
+          GITHUB_REPOSITORY: noriban/AutoNote
+      # - name: Create Release
+      #   id: create_release
+      #   uses: actions/create-release@v1
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     tag_name: ${{ env.VERSION_INFORMATION }}
+      #     release_name: ${{ github.event.repository.name }} ${{ env.VERSION_INFORMATION }}
+      #     prerelease: true
+      # - name: Upload Release APK
+      #   id: upload_release_asset
+      #   uses: actions/upload-release-asset@v1.0.2
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     upload_url: ${{ steps.create_release.outputs.upload_url }}
+      #     asset_path: ${{ apk }}
+      #     asset_name: ${{ github.event.repository.name }}.apk
+      #     asset_content_type: application/apk

@@ -32,7 +32,7 @@ jobs:
       - name: Build AutoNote
         run: ./gradlew assembleRelease
       - name: Sign APK
-        uses: noriban/sign-android-release@v3
+        uses: r0adkll/sign-android-release@v1
         id: sign_app
         with:
           releaseDirectory: app/build/outputs/apk/release
@@ -56,7 +56,6 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: apk
-        id: apk
       - name: Upload artifact to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1.4.0
         with:
@@ -64,7 +63,7 @@ jobs:
           serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
           releaseNotesFile: ${{ github.repository }}/Changelog.md
           groups: qa
-          file: ${{apk}}
+          file: apk/app-release-unsigned-signed.apk
 
 #     name: Deploy to Play Store
 
