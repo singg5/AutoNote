@@ -56,6 +56,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: apk
+          path: app/build/outputs/apk/release
       - name: Upload artifact to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1.4.0
         with:
@@ -63,7 +64,7 @@ jobs:
           serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
           releaseNotesFile: ${{ github.repository }}/Changelog.md
           groups: qa
-          file: apk/app-release-unsigned-signed.apk
+          file: app/build/outputs/apk/release/app-release-unsigned-signed.apk
 
 #     name: Deploy to Play Store
 
