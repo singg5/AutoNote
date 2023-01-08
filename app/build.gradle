@@ -22,7 +22,7 @@ android {
 //            println project.android.defaultConfig.versionName
 //        }
         task printVersionInformation {
-            println defaultConfig.versionName + "-" + defaultConfig.versionCode
+            println defaultConfig.versionName + "-(" + defaultConfig.versionCode + ")"
         }
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
