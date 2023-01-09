@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1046816921148",
+    "project_id": "autonote-6b9ad",
+    "storage_bucket": "autonote-6b9ad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1046816921148:android:d9bb895e8096b5da465539",
+        "android_client_info": {
+          "package_name": "com.averis.autonote"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1046816921148-nt2fhkt65n773mdvu2tnnutlcms0h6kt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8gsY4xoeqWqQUJWm-DCgywN0LO8WBrVE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1046816921148-nt2fhkt65n773mdvu2tnnutlcms0h6kt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
