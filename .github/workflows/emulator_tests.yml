@@ -9,6 +9,7 @@ on:
       - '**.md'
       - 'website/**'
       - '**.yml'
+  workflow_dispatch:
 jobs:
   test:
     name: Hardware-accelerated Android emulator test
