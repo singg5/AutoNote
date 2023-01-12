@@ -1,3 +1,38 @@
-*{
-    background-color: white;
+body {
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+.site{
+margin: 1em;
+}
+.navbar {
+    border: 1px solid red;
+    position: fixed;
+    top: 0;
+    height: auto;
+    border-radius: 20px;
+    display: flex;
+}
+.navbar-items {
+    border: 1px solid rgb(30, 150, 38);
+    display: flex;
+    padding: 0.5em;
+    gap: 1em;
+}
+.navbar li {
+    border: 1px solid rosybrown;
+    list-style: none;
+    align-items: center;
+}
+.navbar a{
+    text-decoration: none;
+}
+.navbar a:hover {
+    border-bottom: 3px solid red;
+    transition: 150ms;
+}
+
+.navbar a.active {
+    border-bottom: 3px solid red;
 }
