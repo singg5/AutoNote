@@ -36,3 +36,6 @@ margin: 1em;
 .navbar a.active {
     border-bottom: 3px solid red;
 }
+h1 {
+    font-size: 100px;
+}
