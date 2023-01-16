@@ -1,41 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+
 body {
-    padding: 0;
-    margin: 0;
-    display: flex;
-}
-.site{
-margin: 1em;
+    display: flexbox;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 .navbar {
-    border: 1px solid red;
-    position: fixed;
-    top: 0;
-    height: auto;
-    border-radius: 20px;
+    border: 1px solid black;
+    position: relative;
+    border-radius: 1em;
+    width: 70%;
+    margin: auto;
     display: flex;
 }
-.navbar-items {
-    border: 1px solid rgb(30, 150, 38);
-    display: flex;
-    padding: 0.5em;
-    gap: 1em;
+.navbar ul {
+    position: relative;
+    height: inherit;
+    width: inherit;
+
 }
-.navbar li {
-    border: 1px solid rosybrown;
-    list-style: none;
+.navbar ul li {
+    border: 1px solid yellow;
+    display: inline;
+    margin-right: 1em;
+    align-self: center;
+}
+.navbar ul li:last-child {
+    
+}
+#list {
+    align-self: center;
     align-items: center;
 }
-.navbar a{
-    text-decoration: none;
+#logo {
+    border: 1px solid purple;
+    position: relative;
+    align-self: center;
+    border-radius: 2em;
+    /* left: 1em; */
+    margin-right: 1em;
 }
-.navbar a:hover {
-    border-bottom: 3px solid red;
-    transition: 150ms;
-}
-
-.navbar a.active {
-    border-bottom: 3px solid red;
-}
-h1 {
-    font-size: 100px;
+#logo img {
+    height: 40px;
+    width: 40
+    px;
 }
