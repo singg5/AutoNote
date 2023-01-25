@@ -10,7 +10,7 @@ on:
       - '**.yml'
   pull_request:
     branches:
-      - development
+      - dev
     paths-ignore:
       - '**.md'
       - 'website/**'
